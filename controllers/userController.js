@@ -2,7 +2,7 @@ const { checkIfEmalValid } = require("../helpers/checkIfEmalValid");
 const db = require("../models/index");
 const { User } = db;
 const getUsers = (req, res, next) => {
-  User.findAll()
+  User.findAll({include : Car})
     .then((users) => res.status(200).send(users))
     .catch((error) => next(error));
 };
