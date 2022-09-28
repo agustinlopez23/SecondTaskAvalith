@@ -9,4 +9,10 @@ const checkMail = (req, res, next) => {
     next(error);
   }
 };
+
+
+ 
+    
+   
+  
 module.exports={checkMail}

@@ -1,8 +1,9 @@
 const { checkIfEmalValid } = require("../helpers/checkIfEmalValid");
 const db = require("../models/index");
-const { User } = db;
+
+const { User, Car } = db;
 const getUsers = (req, res, next) => {
-  User.findAll({include : Car})
+  User.findAll({ include: Car })
     .then((users) => res.status(200).send(users))
     .catch((error) => next(error));
 };
@@ -23,8 +24,11 @@ const addUser = (req, res, next) => {
     User.create(req.body)
       .then((user) => res.status(200).send(`User Created`))
       .catch((error) => next(error));
-  } catch (error) {next(error)}
+  } catch (error) {
+    next(error);
+  }
 };
+
 const editUser = (req, res, next) => {
   const id = req.params.id;
   const newUser = req.body;
